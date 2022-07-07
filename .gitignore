@@ -113,11 +113,9 @@ int main() {
   if ( p7 == d0 )
   {
     cout << "O codigo de barras está correto!" << endl;
-    cout << "Feito por: Giuseppe S., Henri W., Erik M. e Guilherme M." << endl;
     return 0;
   } else {
     cout << "O codigo de barras está incorreto" << endl;
-    cout << "Feito por: Giuseppe S., Henri W., Erik M. e Guilherme M." << endl;
     return 0;
   }
 
