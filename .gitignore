@@ -1,32 +1,125 @@
-# Prerequisites
-*.d
+#include <iostream>
+#include <locale.h>
+#include <stdio.h>
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+using namespace std;
 
-# Precompiled Headers
-*.gch
-*.pch
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+int main() {
 
-# Fortran module files
-*.mod
-*.smod
+  // Declaração de variaveis
+  
+  long long int codigo, codigo_v ;
+  int d0, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, p1_d0, p1_d1, p1_d2, p1_d3, p1_d4, p1_d5, p1_d6, p1_d7, p1_d8, p1_d9, p1_d10, p1_d11, p1_d12, p3, p4, p5, p6, p7 ;
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+  // Entrada do codigo de barras
 
-# Executables
-*.exe
-*.out
-*.app
+  cout << "Digite o codigo de barras de 13 digitos:" << endl;
+  cin >> codigo;
+
+  // Verificação de numero de digitos:
+
+  codigo_v = codigo / 1000000000000;
+
+  if ( codigo_v == 0 )
+  {
+    cout << "seu codigo tem menos de 13 digitos" << endl;
+      cout << "Feito por: Giuseppe S., Henri W., Erik M. e Guilherme M." << endl; 
+    return 0;
+  }
+    if ( codigo_v >= 10 )
+  {
+    cout << "seu codigo tem mais de 13 digitos" << endl;
+    cout << "Feito por: Giuseppe S., Henri W., Erik M. e Guilherme M." << endl;
+    return 0;
+  }
+
+  // Passo 1: Separação dos digitos usando "%" e "/"
+
+  d12 = codigo / 1000000000000;
+
+  d11 = ( codigo / 100000000000 ) % 10 ;
+
+  d10 = ( codigo / 10000000000 ) % 10 ;
+
+  d9 = ( codigo / 1000000000 ) % 10 ;
+
+  d8 = ( codigo / 100000000 ) % 10 ;
+
+  d7 = ( codigo / 10000000 ) % 10 ;
+
+  d6 = ( codigo / 1000000 ) % 10 ;
+
+  d5 = ( codigo / 100000 ) % 10 ;
+
+  d4 = ( codigo / 10000 ) % 10 ;
+
+  d3 = ( codigo / 1000 ) % 10 ;
+
+  d2 = ( codigo / 100 ) % 10 ;
+
+  d1 = ( codigo / 10 ) % 10 ;
+
+  d0 = codigo % 10 ;
+
+  // Passo 1 e 2: Multiplicar os impares por 3
+
+  p1_d12 = d12 * 1;
+
+  p1_d11 = d11 * 3;
+
+  p1_d10 = d10 * 1;
+
+  p1_d9 = d9 * 3;
+
+  p1_d8 = d8 * 1;
+
+  p1_d7 = d7 * 3;
+
+  p1_d6 = d6 * 1;
+
+  p1_d5 = d5 * 3;
+
+  p1_d4 = d4 * 1;
+
+  p1_d3 = d3 * 3;
+
+  p1_d2 = d2 * 1;
+
+  p1_d1 = d1 * 3;
+
+  // Passo 3: somar todos os resultados das multiplicações
+
+  p3 = + p1_d1 + p1_d2 + p1_d3 + p1_d4 + p1_d5 + p1_d6 + p1_d7 + p1_d8 + p1_d9 + p1_d10 + p1_d11 + p1_d12;
+
+  // Passo 4: Dividir o resultado da soma por 10
+
+  p4 = p3 / 10;
+
+  // Passo 5: Somar 1 ao resultado da divisão
+
+  p5 = p4 + 1;
+
+  // Passo 6: MUltiplicar o resultado da soma por 10
+
+  p6 = p5 * 10;
+
+  // Passo 7 e 8 : Descobrir o codigo verificador subtraindo o resultado do "Passo 6" pelo resultado do "Passo 3". E caso o digito verificador resulte em 10, substituir por "0"
+
+  p7 = ( p6 - p3 ) % 10;
+
+  // Verificar se o codigo verificor esta correspondente ao esperado
+
+  if ( p7 == d0 )
+  {
+    cout << "O codigo de barras está correto!" << endl;
+    cout << "Feito por: Giuseppe S., Henri W., Erik M. e Guilherme M." << endl;
+    return 0;
+  } else {
+    cout << "O codigo de barras está incorreto" << endl;
+    cout << "Feito por: Giuseppe S., Henri W., Erik M. e Guilherme M." << endl;
+    return 0;
+  }
+
+}
+
